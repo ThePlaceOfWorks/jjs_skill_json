@@ -26,7 +26,7 @@ func menuMode() {
 	
 	for {
 		fmt.Println()
-		fmt.Println("ZSTD Tool for FAE  |  " + CREDITS)
+		fmt.Println("JJS Skill Builder Tool for FRIENDS  |  " + CREDITS)
 		fmt.Println("--------------------")
 		fmt.Println("1) Decode (b64 -> json)")
 		fmt.Println("2) Encode (json -> b64)")

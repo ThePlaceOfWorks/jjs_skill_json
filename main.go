@@ -26,13 +26,13 @@ func menuMode() {
 	
 	for {
 		fmt.Println()
-		fmt.Println("ZSTD Tool " + CREDITS)
+		fmt.Println("ZSTD Tool for FAE (by Agi) ")
 		fmt.Println("--------------------")
 		fmt.Println("1) Decode (b64 -> json)")
 		fmt.Println("2) Encode (json -> b64)")
 		fmt.Println("Q) Cikis")
 		fmt.Println()
-		fmt.Print("Secim: ")
+		fmt.Print("Choice: ")
 		
 		choice, _ := reader.ReadString('\n')
 		choice = strings.TrimSpace(strings.ToLower(choice))
@@ -43,20 +43,20 @@ func menuMode() {
 		case "2":
 			doEncode(reader)
 		case "q":
-			fmt.Println("Gorusuruz.")
+			fmt.Println("Bai Bai!!!!")
 			return
 		default:
-			fmt.Println("Gecersiz secim")
+			fmt.Println("Invalid selection!")
 		}
 	}
 }
 
 func doDecode(reader *bufio.Reader) {
-	fmt.Print("Girdi (.b64): ")
+	fmt.Print("Input: (e.g: <file-name>.b64): ")
 	input, _ := reader.ReadString('\n')
 	input = strings.TrimSpace(input)
 	
-	fmt.Print("Cikti [output.json]: ")
+	fmt.Print("Output: (e.g: <file-name>.json): ")
 	output, _ := reader.ReadString('\n')
 	output = strings.TrimSpace(output)
 	if output == "" {
@@ -81,17 +81,17 @@ func doDecode(reader *bufio.Reader) {
 	encoder.SetEscapeHTML(false)
 	encoder.Encode(jsonData)
 	
-	fmt.Printf("Tamam: %s -> %s\n", input, output)
+	fmt.Printf("Done: %s -> %s\n", input, output)
 	fmt.Print("[Enter]")
 	reader.ReadString('\n')
 }
 
 func doEncode(reader *bufio.Reader) {
-	fmt.Print("Girdi (.json): ")
+	fmt.Print("Input (.json): ")
 	input, _ := reader.ReadString('\n')
 	input = strings.TrimSpace(input)
 	
-	fmt.Print("Cikti [output.b64]: ")
+	fmt.Print("Output [output.b64]: ")
 	output, _ := reader.ReadString('\n')
 	output = strings.TrimSpace(output)
 	if output == "" {
@@ -111,7 +111,7 @@ func doEncode(reader *bufio.Reader) {
 	b64 := base64.StdEncoding.EncodeToString(zstdData)
 	os.WriteFile(output, []byte(b64), 0644)
 	
-	fmt.Printf("Tamam: %s -> %s\n", input, output)
+	fmt.Printf("Done: %s -> %s\n", input, output)
 	fmt.Print("[Enter]")
 	reader.ReadString('\n')
 }
@@ -163,6 +163,6 @@ func cliMode() {
 		b64 := base64.StdEncoding.EncodeToString(zstdData)
 		os.WriteFile(output, []byte(b64), 0644)
 		
-		fmt.Printf("Tamam: %s -> %s\n", input, output)
+		fmt.Printf("Done: %s -> %s\n", input, output)
 	}
 }

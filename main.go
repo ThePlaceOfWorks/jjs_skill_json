@@ -51,7 +51,7 @@ func menuMode() {
 	}
 }
 
-func doDecode(reader *bufio.NewReader) {
+func doDecode(reader *bufio.Reader) {
 	fmt.Print("Girdi (.b64): ")
 	input, _ := reader.ReadString('\n')
 	input = strings.TrimSpace(input)
@@ -86,7 +86,7 @@ func doDecode(reader *bufio.NewReader) {
 	reader.ReadString('\n')
 }
 
-func doEncode(reader *bufio.NewReader) {
+func doEncode(reader *bufio.Reader) {
 	fmt.Print("Girdi (.json): ")
 	input, _ := reader.ReadString('\n')
 	input = strings.TrimSpace(input)
